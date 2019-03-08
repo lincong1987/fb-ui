@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>管理员登录-FireBird 后台管理系统-FireBirdAdmin 1.0</title>
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport"
+	      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta http-equiv="Cache-Control" content="no-siteapp"/>
+	<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>button</title>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/html" id="template">
+	<div>
+		<div>
+			<p>按钮类型</p>
+			<Button>Default</Button>
+			<Button type="primary">Primary</Button>
+			<Button type="dashed">Dashed</Button>
+			<Button type="text">Text</Button>
+			<br><br>
+			<Button type="info">Info</Button>
+			<Button type="success">Success</Button>
+			<Button type="warning">Warning</Button>
+			<Button type="error">Error</Button>
+		</div>
+
+
+		<div>
+			<p>幽灵按钮</p>
+			<Button type="default" ghost>Default</Button>
+			<Button type="primary" ghost>Primary</Button>
+			<Button type="dashed" ghost>Dashed</Button>
+			<Button type="text" ghost>Text</Button>
+			<Button type="info" ghost>Info</Button>
+			<Button type="success" ghost>Success</Button>
+			<Button type="warning" ghost>Warning</Button>
+			<Button type="error" ghost>Error</Button>
+		</div>
+
+		<div>
+			<p>图标按钮及按钮形状</p>
+			<Button type="primary" shape="circle" icon="chaxun"></Button>
+			<Button type="primary" icon="bangzhu">Search</Button>
+			<Button type="primary" shape="circle" icon="chaxun">Search</Button>
+			<Button type="primary" shape="circle">Circle</Button>
+			<br><br>
+			<Button shape="circle" icon="chaxun"></Button>
+			<Button icon="chaxun">Search</Button>
+			<Button shape="circle" icon="chaxun">Search</Button>
+			<Button shape="circle">Circle</Button>
+		</div>
+
+		<div>
+			<p>按钮尺寸</p>
+			<div>
+				<Button on-click="setButtonSize('large')" type="primary">large</Button>
+				<Button on-click="setButtonSize('default')" type="default">Default</Button>
+				<Button on-click="setButtonSize('small')" type="dashed">small</Button>
+			</div>
+			<Button size="{{buttonSize}}" type="primary">Primary</Button>
+			<Button size="{{buttonSize}}" type="default">Default</Button>
+			<Button size="{{buttonSize}}" type="dashed">Dashed</Button>
+			<Button size="{{buttonSize}}" type="text">Text</Button>
+			<br><br>
+			<Button size="{{buttonSize}}" icon="xiazai" type="primary" shape="circle"></Button>
+			<Button size="{{buttonSize}}" icon="xiazai" type="primary">Download</Button>
+			<br><br>
+
+		</div>
+
+
+		<div>
+			<p>长按钮</p>
+			<Button type="success" long>SUBMIT</Button>
+			<br><br>
+			<Button type="error" long>DELETE</Button>
+		</div>
+
+		<div>
+			<p>不可用状态</p>
+			<Button>Default</Button>
+			<Button disabled>Default(Disabled)</Button>
+			<br>
+			<Button type="primary">Primary</Button>
+			<Button type="primary" disabled>Primary(Disabled)</Button>
+			<br>
+			<Button type="dashed">Dashed</Button>
+			<Button type="dashed" disabled>Dashed(Disabled)</Button>
+			<br>
+			<Button type="text">Text</Button>
+			<Button type="text" disabled>Text(Disabled)</Button>
+		</div>
+
+		<div>
+			<p>加载中状态</p>
+			<Button type="primary" loading>Loading...</Button>
+			<Button type="primary" loading="{{loading}}" on-click="toLoading()">
+				{{#if !loading}}
+				<span>Click me!</span>
+				{{else}}
+				<span>Loading...</span>
+				{{/if}}
+			</Button>
+			<Button type="primary" loading="{{loading2}}" icon="chaxun" on-click="toLoading2()">
+				{{#if !loading2}}
+				<span>Click me!</span>
+				{{else}}
+				<span>Loading...</span>
+				{{/if}}
+			</Button>
+			<Button loading shape="circle"></Button>
+			<Button loading shape="circle" type="primary"></Button>
+		</div>
+
+	</div>
+</script>
+</body>
+</html>

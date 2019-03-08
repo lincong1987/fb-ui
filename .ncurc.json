@@ -1,0 +1,6 @@
+{
+  "upgrade": true,
+  "filter": "fb-core",
+  "reject": [
+  ]
+}

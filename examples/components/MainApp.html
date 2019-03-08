@@ -1,0 +1,29 @@
+<div>
+
+
+	MainApp
+
+
+	<div>header</div>
+	<div>menu</div>
+	<div id="tab">
+
+		<div>
+			<ul>
+				{{#each tabs}}
+					<li><a href="javascript:;">{{this.title}}</a></li>
+				{{/each}}
+			</ul>
+		</div>
+
+		<div>
+			{{#each tabs}}
+
+			{{this.content}}
+
+			{{/each}}
+		</div>
+
+
+	</div>
+</div>

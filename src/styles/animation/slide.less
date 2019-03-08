@@ -1,0 +1,119 @@
+.slide-motion(@className, @keyframeName) {
+    .make-motion(@className, @keyframeName);
+    .@{className}-enter, .@{className}-appear {
+        opacity: 0;
+        animation-timing-function: @ease-in-out;
+    }
+    .@{className}-leave {
+        animation-timing-function: @ease-in-out;
+    }
+}
+
+.slide-motion(slide-up, fbSlideUp);
+.slide-motion(slide-down, fbSlideDown);
+.slide-motion(slide-left, fbSlideLeft);
+.slide-motion(slide-right, fbSlideRight);
+
+@keyframes fbSlideUpIn {
+    0% {
+        opacity: 0;
+        transform-origin: 0% 0%;
+        transform: scaleY(.8);
+    }
+    100% {
+        opacity: 1;
+        transform-origin: 0% 0%;
+        transform: scaleY(1);
+    }
+}
+
+@keyframes fbSlideUpOut {
+    0% {
+        opacity: 1;
+        transform-origin: 0% 0%;
+        transform: scaleY(1);
+    }
+    100% {
+        opacity: 0;
+        transform-origin: 0% 0%;
+        transform: scaleY(.8);
+    }
+}
+
+@keyframes fbSlideDownIn {
+    0% {
+        opacity: 0;
+        transform-origin: 100% 100%;
+        transform: scaleY(.8);
+    }
+    100% {
+        opacity: 1;
+        transform-origin: 100% 100%;
+        transform: scaleY(1);
+    }
+}
+
+@keyframes fbSlideDownOut {
+    0% {
+        opacity: 1;
+        transform-origin: 100% 100%;
+        transform: scaleY(1);
+    }
+    100% {
+        opacity: 0;
+        transform-origin: 100% 100%;
+        transform: scaleY(.8);
+    }
+}
+
+@keyframes fbSlideLeftIn {
+    0% {
+        opacity: 0;
+        transform-origin: 0% 0%;
+        transform: scaleX(.8);
+    }
+    100% {
+        opacity: 1;
+        transform-origin: 0% 0%;
+        transform: scaleX(1);
+    }
+}
+
+@keyframes fbSlideLeftOut {
+    0% {
+        opacity: 1;
+        transform-origin: 0% 0%;
+        transform: scaleX(1);
+    }
+    100% {
+        opacity: 0;
+        transform-origin: 0% 0%;
+        transform: scaleX(.8);
+    }
+}
+
+@keyframes fbSlideRightIn {
+    0% {
+        opacity: 0;
+        transform-origin: 100% 0%;
+        transform: scaleX(.8);
+    }
+    100% {
+        opacity: 1;
+        transform-origin: 100% 0%;
+        transform: scaleX(1);
+    }
+}
+
+@keyframes fbSlideRightOut {
+    0% {
+        opacity: 1;
+        transform-origin: 100% 0%;
+        transform: scaleX(1);
+    }
+    100% {
+        opacity: 0;
+        transform-origin: 100% 0%;
+        transform: scaleX(.8);
+    }
+}

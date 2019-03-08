@@ -1,0 +1,107 @@
+<!doctype html>
+<%
+// 入口名称
+let entry = htmlWebpackPlugin.options.name;
+let ie8 = "";
+let chunks = [];
+
+for (let name in htmlWebpackPlugin.files.chunks) {
+	let chunk = htmlWebpackPlugin.files.chunks[name];
+	if (name === "vendor") {
+		chunks.push(chunk.entry);
+	}
+	if (name === entry) {
+		chunks.push(chunk.entry);
+	}
+	if (name === "ie8") {
+		ie8 = chunk.entry;
+	}
+}
+
+//
+// const polyfillFileIndex = jsFiles.findIndex(jsFile => jsFile.entryName === 'ie8');
+// const polyfillFile = jsFiles.splice(polyfillFileIndex, 1)[0];
+%>
+<html>
+<head>
+	<meta charset="utf8"/>
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title><%= htmlWebpackPlugin.options.title %>-</title>
+
+	<!--[if lt IE 8]>
+	<script>
+		if (typeof document.querySelector === 'undefined') {
+			document.querySelector = function (target) {
+				return document.getElementsByTagName(target)[0] || null;
+			}
+		}
+	</script>
+	<![endif]-->
+
+	<!--[if lt IE 9]>
+	<script src="https://cdn.bootcss.com/es5-shim/4.5.10/es5-shim.min.js"></script>
+	<script src="https://cdn.bootcss.com/es5-shim/4.5.10/es5-sham.min.js"></script>
+	<script src="http://cdn.bootcss.com/console-polyfill/0.3.0/index.min.js"></script>
+	<![endif]-->
+	
+	<!--[if lte IE 8]>
+	<script>
+
+		(function() {
+			var testObject = {};
+			if (!(Object.setPrototypeOf || testObject.__proto__)) {
+				var nativeGetPrototypeOf = Object.getPrototypeOf;
+
+				Object.getPrototypeOf = function(object) {
+					if (object.__proto__) {
+						return object.__proto__;
+					} else {
+						return nativeGetPrototypeOf.call(Object, object);
+					}
+				}
+			}
+		})();
+
+		if (!Function.prototype.bind) {
+			Function.prototype.bind = function (oThis) {
+				if (typeof this !== 'function') {
+					throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable')
+				}
+				var args = Array.prototype.slice.call(arguments, 1)
+				var fToBind = this
+				var fNOP = function () {
+				}
+				var fBound = function () {
+					return fToBind.apply(this instanceof fNOP ? this : oThis, args.concat(Array.prototype.slice.call(arguments)))
+				}
+
+				if (this.prototype) {
+					fNOP.prototype = this.prototype
+				}
+				fBound.prototype = new fNOP()
+				return fBound
+			}
+		}
+	</script>
+	<script type="text/javascript" src="<%= ie8 %>"></script>
+	<![endif]-->
+	<link rel="icon" type="image/png" href="<%= htmlWebpackPlugin.options.favicon %>">
+	<!--<% for (var css in htmlWebpackPlugin.files.css) { %>-->
+	<!--<link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">-->
+	<!--<% } %>-->
+</head>
+<body>   
+<div id="app">
+	loading...
+</div>
+<!--<%= JSON.stringify(htmlWebpackPlugin, null, "\t") %>-->
+<!--<%= JSON.stringify([], null, "\t") %>-->
+
+<% chunks.forEach(path => { %>
+<script type="text/javascript" src="<%= path %>"></script>
+<% }) %>
+
+</body>
+</html>
+

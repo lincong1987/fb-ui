@@ -1,0 +1,47 @@
+<%
+const jsFiles = htmlWebpackPlugin.files.js.concat();
+const polyfillFileIndex = jsFiles.findIndex(jsFile => jsFile.entryName === 'es5-polyfill');
+const polyfillFile = jsFiles.splice(polyfillFileIndex, 1)[0];
+
+
+
+%>
+
+
+
+<%
+htmlWebpackPlugin.files.js.forEach(file => {
+
+	%>
+
+  <%=file%>
+
+<%
+
+})
+
+ %>
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf8"/>
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title><%= htmlWebpackPlugin.options.title %></title>
+	<!--[if lte IE 8]>
+	<script type="text/javascript" src="<%= polyfillFile.path %>"></script>
+	<![endif]-->
+	<link rel="icon" type="image/png" href="<%= htmlWebpackPlugin.files.favicon %>">
+	<% for (var css in htmlWebpackPlugin.files.css) { %>
+	<link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+	<% } %>
+</head>
+<body>
+<div id="app"></div>
+<% jsFiles.forEach(jsFile => { %>
+<script type="text/javascript" src="<%= jsFile.path %>"></script>
+<% }) %>
+</body>
+</html>
+

@@ -1,0 +1,43 @@
+{
+  "name": "fb-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "link fb-core && webpack --mode=development  --config build/dev.js",
+    "prod": "webpack --mode=production  --config build/prod.js",
+    "dev-server": "webpack-dev-server --mode=development --config build/dev.js",
+    "dev-server-debug": "webpack-dev-server --debug --mode=development --config build/dev.js",
+    "css": "gulp --gulpfile build/css.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "argv": "0.0.2",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "core-js": "^2.5.7",
+    "css-loader": "^0.28.11",
+    "del": "^3.0.0",
+    "es3ify-webpack-plugin": "0.0.1",
+    "html-webpack-plugin": "^4.0.0-alpha",
+    "koa": "^2.5.1",
+    "koa-static": "^4.0.3",
+    "shelljs": "^0.8.2",
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.3"
+  },
+  "dependencies": {
+    "art-template": "^4.13.2",
+    "fb-core": "^1.0.12"
+  }
+}
