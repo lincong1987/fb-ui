@@ -21,32 +21,32 @@
 // import 'bluebird'; //性能超高的Promise实现
 
 
-//import {FireBird, Router} from 'fb-core';
+import {FireBird, Router} from 'fb-core';
   console.log("ok")
-// import "../src/components/index"
+import "../src/components/index"
 //
-// const template = require("./pages/login.html");
-//
-//
+const template = require("./pages/login.html");
 //
 //
 //
 //
-// let app = new FireBird({
-// 	el: "#app",
-// 	template: template,
-// 	data() {
-// 		return {};
-// 	},
-// 	afterMount() {
 //
-// 	},
-// 	methods: {
-// 		doLogin() {
-// 			alert("doLogin called!")
-// 		}
-// 	}
-// });
+//
+let app = new FireBird({
+	el: "#app",
+	template: template,
+	data() {
+		return {};
+	},
+	afterMount() {
+
+	},
+	methods: {
+		doLogin() {
+			alert("doLogin called!")
+		}
+	}
+});
 
 
 // require("./components/NotFoundApp");

@@ -19,12 +19,12 @@ import "../src/components/index"
 
 let template = require("./pages/index.html");
 
-let a = `ads${template}asd` ;
-
+let a = `<div>ads${template}asd</div>` ;
+   alert(1)
 
 window.app = new FireBird({
 	el: "#app",
-	template: template,
+	template: a,
 	data() {
 		return {
 			aaa: "hello"

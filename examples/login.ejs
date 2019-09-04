@@ -1,47 +1,49 @@
+<!doctype html>
 <%
-const jsFiles = htmlWebpackPlugin.files.js.concat();
-const polyfillFileIndex = jsFiles.findIndex(jsFile => jsFile.entryName === 'es5-polyfill');
-const polyfillFile = jsFiles.splice(polyfillFileIndex, 1)[0];
+// 入口名称
+let entry = htmlWebpackPlugin.options.name;
+let ie8 = "";
+let chunks = [];
+
+htmlWebpackPlugin.files.js.forEach((name) => {
+	if (new RegExp(`^(${entry}.)[A-Za-z0-9]{20}.js$`).test(name)) {
+		chunks.push(name);
+	}
+})
 
 
 
+//
+// const polyfillFileIndex = jsFiles.findIndex(jsFile => jsFile.entryName === 'ie8');
+// const polyfillFile = jsFiles.splice(polyfillFileIndex, 1)[0];
 %>
 
 
-
-<%
-htmlWebpackPlugin.files.js.forEach(file => {
-
-	%>
-
-  <%=file%>
-
-<%
-
-})
-
- %>
-
-<!doctype html>
 <html>
 <head>
 	<meta charset="utf8"/>
 	<meta name="renderer" content="webkit|ie-comp|ie-stand">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title><%= htmlWebpackPlugin.options.title %></title>
-	<!--[if lte IE 8]>
-	<script type="text/javascript" src="<%= polyfillFile.path %>"></script>
-	<![endif]-->
-	<link rel="icon" type="image/png" href="<%= htmlWebpackPlugin.files.favicon %>">
-	<% for (var css in htmlWebpackPlugin.files.css) { %>
-	<link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
-	<% } %>
+	<title><%= htmlWebpackPlugin.options.title %>-</title>
+
+
+	<!--<script type="text/javascript" src="<%= ie8 %>"></script>-->
+ 
+	<link rel="icon" type="image/png" href="<%= htmlWebpackPlugin.options.favicon %>">
+	<!--<% for (var css in htmlWebpackPlugin.files.css) { %>-->
+	<!--<link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">-->
+	<!--<% } %>-->
 </head>
 <body>
-<div id="app"></div>
-<% jsFiles.forEach(jsFile => { %>
-<script type="text/javascript" src="<%= jsFile.path %>"></script>
+<div id="app">
+	loading...
+</div>
+<!--<%= JSON.stringify(htmlWebpackPlugin, null, "\t") %>-->
+
+<% chunks.forEach(path => { %>
+<script type="text/javascript" src="<%= path %>"></script>
 <% }) %>
+
 </body>
 </html>
 

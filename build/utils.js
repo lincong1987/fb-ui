@@ -45,7 +45,7 @@ exports.newHtmlConfig = function (name, title) {
 		inject: false,
 		filename: path.join(__dirname, `../dist/${name}.html`),
 		template: exports.getFilePath(`../examples/${name}.ejs`) || exports.getFilePath(`../examples/${name}.html`),
-		chunks: ["ie8", "vendor", name],
+		chunks: [name],
 		meta: {
 			"page": name,
 			'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',

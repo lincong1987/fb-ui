@@ -20,14 +20,14 @@ import {PasswordField} from './PasswordField/index';
 import {Tab} from './Tab/index';
 import {Icon} from './Icon/index';
 
-import "@/styles/index.less";
+import "../styles/index.less";
 
 
 export {
 	Form,
 	Button,
 	TextField,
-	PasswordField,
+	PasswordField,           
 	Tab,
 	Icon
 }
